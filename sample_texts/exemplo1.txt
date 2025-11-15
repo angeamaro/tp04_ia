@@ -1,0 +1,4 @@
+Sócrates é um humano.
+Todo humano é mortal.
+Platão é um filósofo.
+Todo filósofo é pensador.

@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  inference-engine:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - kb-data:/app/data
+      - ./uploads:/app/uploads
+    environment:
+      - FLASK_ENV=production
+      - KB_PATH=/app/data/kb.json
+    restart: unless-stopped
+
+volumes:
+  kb-data:

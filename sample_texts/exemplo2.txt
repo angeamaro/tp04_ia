@@ -1,0 +1,3 @@
+Rex é um cão.
+Todo cão é um animal.
+Todo animal é um ser vivo.

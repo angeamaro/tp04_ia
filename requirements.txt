@@ -1,0 +1,4 @@
+flask==3.0.0
+spacy==3.7.2
+# Download Portuguese model with: python -m spacy download pt_core_news_sm
+gunicorn==21.2.0

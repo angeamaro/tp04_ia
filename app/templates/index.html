@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motor de Inferência Inteligente</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .upload-area {
+            border: 2px dashed #667eea;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .upload-area:hover {
+            background: #f0f4ff;
+            border-color: #764ba2;
+        }
+        
+        .upload-area input[type="file"] {
+            display: none;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: transform 0.2s;
+            margin: 5px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+        }
+        
+        .btn-danger {
+            background: #dc3545;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .kb-display {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .fact-item, .rule-item {
+            padding: 8px 12px;
+            margin: 5px 0;
+            border-radius: 5px;
+            background: #e7f3ff;
+            border-left: 3px solid #667eea;
+        }
+        
+        .rule-item {
+            background: #fff3cd;
+            border-left-color: #ffc107;
+        }
+        
+        .proof-tree {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        
+        .tree-node {
+            margin-left: 20px;
+            padding: 5px;
+            border-left: 2px solid #667eea;
+        }
+        
+        .result-true {
+            color: #28a745;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .result-false {
+            color: #dc3545;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .message {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        
+        .message-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .message-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            color: #6c757d;
+            margin-top: 5px;
+        }
+        
+        .collapsible {
+            cursor: pointer;
+            padding: 10px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            text-align: left;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        
+        .collapsible:hover {
+            background: #764ba2;
+        }
+        
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: #f8f9fa;
+            border-radius: 0 0 5px 5px;
+        }
+        
+        .collapsible-content.active {
+            max-height: 1000px;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧠 Motor de Inferência Inteligente</h1>
+            <p>TP04 - Inteligência Artificial 2025</p>
+        </header>
+        
+        <div class="content">
+            <!-- Upload Section -->
+            <div class="section">
+                <h2>📄 Upload de Texto</h2>
+                <div class="upload-area" onclick="document.getElementById('fileInput').click()">
+                    <p>📁 Clique para selecionar um ficheiro .txt</p>
+                    <p style="font-size: 0.9em; color: #6c757d;">ou arraste e solte aqui</p>
+                    <input type="file" id="fileInput" accept=".txt" onchange="uploadFile()">
+                </div>
+                <div id="uploadMessage"></div>
+            </div>
+            
+            <!-- Knowledge Base Section -->
+            <div class="section">
+                <h2>📚 Base de Conhecimento</h2>
+                <div class="stats" id="stats">
+                    <div class="stat-card">
+                        <div class="stat-number" id="factCount">0</div>
+                        <div class="stat-label">Fatos</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="ruleCount">0</div>
+                        <div class="stat-label">Regras</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="inferenceCount">0</div>
+                        <div class="stat-label">Inferências</div>
+                    </div>
+                </div>
+                
+                <button class="collapsible" onclick="toggleCollapsible('factsContent')">
+                    Ver Fatos
+                </button>
+                <div id="factsContent" class="collapsible-content">
+                    <div id="factsList"></div>
+                </div>
+                
+                <button class="collapsible" onclick="toggleCollapsible('rulesContent')">
+                    Ver Regras
+                </button>
+                <div id="rulesContent" class="collapsible-content">
+                    <div id="rulesList"></div>
+                </div>
+                
+                <div style="margin-top: 15px;">
+                    <button class="btn btn-secondary" onclick="loadKB()">🔄 Atualizar</button>
+                    <button class="btn btn-secondary" onclick="runInference()">⚡ Executar Inferência</button>
+                    <button class="btn btn-danger" onclick="clearKB()">🗑️ Limpar Base</button>
+                </div>
+            </div>
+            
+            <!-- Query Section -->
+            <div class="section">
+                <h2>🔍 Consultas</h2>
+                <input type="text" id="queryInput" placeholder="Ex: mortal(Socrates)?" 
+                       onkeypress="if(event.key === 'Enter') executeQuery()">
+                <button class="btn" onclick="executeQuery()">Executar Consulta</button>
+                
+                <div id="queryResult" style="margin-top: 20px;"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Carregar KB ao iniciar
+        window.onload = function() {
+            loadKB();
+        };
+        
+        function uploadFile() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            
+            if (!file) return;
+            
+            const formData = new FormData();
+            formData.append('file', file);
+            
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showMessage('uploadMessage', data.message, 'success');
+                    loadKB();
+                } else {
+                    showMessage('uploadMessage', data.error || 'Erro ao processar ficheiro', 'error');
+                }
+            })
+            .catch(error => {
+                showMessage('uploadMessage', 'Erro: ' + error, 'error');
+            });
+        }
+        
+        function loadKB() {
+            fetch('/kb')
+            .then(response => response.json())
+            .then(data => {
+                // Update stats
+                document.getElementById('factCount').textContent = data.facts.length;
+                document.getElementById('ruleCount').textContent = data.rules.length;
+                document.getElementById('inferenceCount').textContent = data.inferences.length;
+                
+                // Update facts list
+                const factsList = document.getElementById('factsList');
+                factsList.innerHTML = data.facts.length > 0 
+                    ? data.facts.map(f => `<div class="fact-item">${f}</div>`).join('')
+                    : '<p>Nenhum fato na base de conhecimento</p>';
+                
+                // Update rules list
+                const rulesList = document.getElementById('rulesList');
+                rulesList.innerHTML = data.rules.length > 0
+                    ? data.rules.map(r => `<div class="rule-item">${r}</div>`).join('')
+                    : '<p>Nenhuma regra na base de conhecimento</p>';
+            })
+            .catch(error => {
+                console.error('Erro ao carregar KB:', error);
+            });
+        }
+        
+        function executeQuery() {
+            const query = document.getElementById('queryInput').value.trim();
+            
+            if (!query) {
+                showMessage('queryResult', 'Por favor, insira uma consulta', 'error');
+                return;
+            }
+            
+            fetch('/query', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ query: query })
+            })
+            .then(response => response.json())
+            .then(data => {
+                displayQueryResult(data);
+            })
+            .catch(error => {
+                showMessage('queryResult', 'Erro: ' + error, 'error');
+            });
+        }
+        
+        function displayQueryResult(data) {
+            const resultDiv = document.getElementById('queryResult');
+            
+            let html = '<div style="padding: 15px; background: white; border-radius: 8px;">';
+            
+            // Result
+            if (data.result === 'true') {
+                html += `<p class="result-true">✓ VERDADEIRO</p>`;
+            } else if (data.result === 'false') {
+                html += `<p class="result-false">✗ FALSO / DESCONHECIDO</p>`;
+            }
+            
+            html += `<p style="margin-top: 10px;"><strong>Consulta:</strong> ${data.query}</p>`;
+            
+            // Substitutions
+            if (data.substitutions) {
+                html += '<p style="margin-top: 10px;"><strong>Substituições:</strong></p>';
+                html += '<pre>' + JSON.stringify(data.substitutions, null, 2) + '</pre>';
+            }
+            
+            // Proof tree
+            if (data.proof_tree) {
+                html += '<h3 style="margin-top: 20px; color: #667eea;">Árvore de Prova:</h3>';
+                html += '<div class="proof-tree">' + formatProofTree(data.proof_tree, 0) + '</div>';
+            }
+            
+            html += '</div>';
+            
+            resultDiv.innerHTML = html;
+        }
+        
+        function formatProofTree(tree, level) {
+            if (!tree) return '';
+            
+            const indent = '  '.repeat(level);
+            let html = indent + '└── <strong>' + tree.fact + '</strong><br>';
+            
+            if (tree.rule) {
+                html += indent + '    <span style="color: #6c757d;">(regra: ' + tree.rule + ')</span><br>';
+            }
+            
+            if (tree.children && tree.children.length > 0) {
+                tree.children.forEach(child => {
+                    html += formatProofTree(child, level + 1);
+                });
+            }
+            
+            return html;
+        }
+        
+        function runInference() {
+            fetch('/infer', {
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message);
+                    loadKB();
+                }
+            })
+            .catch(error => {
+                alert('Erro ao executar inferência: ' + error);
+            });
+        }
+        
+        function clearKB() {
+            if (!confirm('Tem certeza que deseja limpar toda a base de conhecimento?')) {
+                return;
+            }
+            
+            fetch('/clear', {
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message);
+                    loadKB();
+                }
+            })
+            .catch(error => {
+                alert('Erro ao limpar KB: ' + error);
+            });
+        }
+        
+        function showMessage(elementId, message, type) {
+            const element = document.getElementById(elementId);
+            element.innerHTML = `<div class="message message-${type}">${message}</div>`;
+            
+            setTimeout(() => {
+                element.innerHTML = '';
+            }, 5000);
+        }
+        
+        function toggleCollapsible(contentId) {
+            const content = document.getElementById(contentId);
+            content.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

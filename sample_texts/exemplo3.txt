@@ -1,0 +1,4 @@
+Maria é uma estudante.
+Pedro é um estudante.
+Todo estudante é uma pessoa.
+Todo pessoa é um ser humano.
