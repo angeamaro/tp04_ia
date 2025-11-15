@@ -241,51 +241,33 @@ docker-compose down
 
 ##  Funcionalidades Implementadas
 
-### Extração Semântica (4 pontos)
 - ✅ Identificação de entidades com spaCy
 - ✅ Extração de fatos: "X é um Y"
 - ✅ Extração de regras: "Todo X é Y"
 - ✅ Normalização de termos
 - ✅ Suporte a Unicode (português)
-
-### Inferência Lógica (4 pontos)
 - ✅ Encadeamento para frente (forward chaining)
 - ✅ Unificação de predicados
 - ✅ Aplicação de substituições
 - ✅ Derivação de novos fatos
 - ✅ Prevenção de duplicados
 - ✅ Justificações com IDs únicos
-
-### Consultas (3 pontos)
 - ✅ Parse de consultas
 - ✅ Busca em base de conhecimento
 - ✅ Geração de árvores de prova
 - ✅ Formato hierárquico
 - ✅ Tracking de derivações
-
-### Interface Web (4 pontos)
 - ✅ Upload de ficheiros
 - ✅ Visualização da KB
 - ✅ Consultas interativas
 - ✅ Árvores de prova colapsáveis
 - ✅ Design moderno e responsivo
-- ✅ Estatísticas em tempo real
-
-### Documentação & Docker (3 pontos)
 - ✅ README completo
 - ✅ Dockerfile funcional
-- ✅ docker-compose.yml
-- ✅ Instruções claras
-- ✅ Exemplos práticos
-
-### Criatividade (2 pontos)
 - ✅ Interface moderna com gradientes
 - ✅ Jupyter Notebook demonstrativo
 - ✅ Script de início rápido
 - ✅ Suite completa de testes
-- ✅ Código bem estruturado
-
-**Total:** 20/20 pontos
 
 ---
 
@@ -299,11 +281,11 @@ docker-compose down
 ---
 
 ## 🎓 Autor
-
-**Projeto desenvolvido para TP04 - Inteligência Artificial 2025**
+**Ângela Amaro - 20220145**
+**Projeto desenvolvido para TP04 - Inteligência Artificial 2025, ISPTEC**
 
 ---
 
 ## 📄 Licença
 
-Projeto académico - Inteligência Artificial 2025
+Projeto académico - ISPTEC - cadeira de Inteligência Artificial 2025
