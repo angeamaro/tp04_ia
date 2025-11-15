@@ -10,13 +10,21 @@ from typing import Dict, List, Optional
 class KnowledgeBase:
     """Gestor da base de conhecimento."""
     
-    def __init__(self, kb_path: str = "kb.json"):
+    def __init__(self, kb_path: str = None):
         """
         Inicializa a base de conhecimento.
         
         Args:
-            kb_path: Caminho para o ficheiro JSON da KB
+            kb_path: Caminho para o ficheiro JSON da KB (usa KB_PATH env var se não especificado)
         """
+        if kb_path is None:
+            kb_path = os.environ.get('KB_PATH', 'kb.json')
+        
+        # Criar diretório se não existir
+        kb_dir = os.path.dirname(kb_path)
+        if kb_dir and not os.path.exists(kb_dir):
+            os.makedirs(kb_dir, exist_ok=True)
+        
         self.kb_path = kb_path
         self.facts: List[str] = []
         self.rules: List[str] = []

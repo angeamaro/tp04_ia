@@ -1,11 +1,10 @@
-# 🧠 Motor de Inferência Inteligente com Extração Semântica
+# Motor de Inferência Inteligente com Extração Semântica
 
 **TP04 - Inteligência Artificial 2025**  
-**Professor:** Bongo Cahisso
-
+**Professor:** Bongo Cahisso  
 ---
 
-## 📋 Descrição do Projeto
+## Descrição
 
 Sistema de inferência lógica baseado em regras que:
 - ✅ Extrai automaticamente **fatos** e **regras** de textos em linguagem natural
@@ -18,18 +17,58 @@ Sistema de inferência lógica baseado em regras que:
 
 ---
 
-## 🏗️ Estrutura do Projeto
+## Instalação e Execução
+
+### Opção 1: Makefile (Recomendado)
+
+```bash
+make build    # Construir imagem Docker
+make run      # Executar container
+```
+
+Aceder: **http://localhost:5000**
+
+Ver todos os comandos: `make help`
+
+### Opção 2: Docker Manual
+
+```bash
+docker build -t tp04-inference-engine .
+docker run -d --name tp04-app -p 5000:5000 tp04-inference-engine
+```
+
+Consultar **[DOCKER.md](DOCKER.md)** para guia completo.
+
+### Opção 3: Execução Local
+
+```bash
+make install  # Instalar dependências
+make local    # Executar aplicação
+```
+
+Ou manualmente:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python -m spacy download pt_core_news_sm
+python -m app.web_app
+```
+
+---
+
+##  Estrutura do Projeto
 
 ```
 tp04_ia/
 ├── app/
-│   ├── __init__.py
 │   ├── text_reader.py          # Leitura de ficheiros
-│   ├── extractor.py            # Extração semântica com spaCy
+│   ├── extractor.py            # Extração semântica (spaCy)
 │   ├── kb_manager.py           # Gestão da base de conhecimento
-│   ├── unification.py          # Funções de unificação
+│   ├── unification.py          # Unificação de predicados
 │   ├── inference.py            # Motor de inferência (forward chaining)
-│   ├── query_engine.py         # Motor de consultas e provas
+│   ├── query_engine.py         # Motor de consultas com provas
 │   ├── web_app.py              # Aplicação Flask
 │   └── templates/
 │       └── index.html          # Interface Web
@@ -40,110 +79,56 @@ tp04_ia/
 ├── notebooks/
 │   └── demo_inferencia.ipynb   # Demonstração completa
 ├── tests/                      # Testes unitários
+│   ├── test_extractor.py
+│   ├── test_unification.py
+│   ├── test_inference.py
+│   ├── test_query.py
+│   ├── test_integration.py
+│   └── run_all_tests.py
 ├── requirements.txt            # Dependências Python
 ├── Dockerfile                  # Configuração Docker
-├── docker-compose.yml          # Orquestração Docker
+├── Makefile                    # Comandos simplificados
+├── DOCKER.md                   # Guia completo Docker
+├── start.sh                    # Script de início rápido
 └── README.md                   # Este ficheiro
 ```
 
 ---
 
-## 🚀 Instalação e Execução
-
-### Opção 1: Execução Local
-
-#### 1. Criar ambiente virtual
-
-```bash
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
-# ou
-venv\Scripts\activate  # Windows
-```
-
-#### 2. Instalar dependências
-
-```bash
-pip install -r requirements.txt
-```
-
-#### 3. Descarregar modelo spaCy português
-
-```bash
-python -m spacy download pt_core_news_sm
-```
-
-#### 4. Executar aplicação
-
-```bash
-python -m app.web_app
-```
-
-A aplicação estará disponível em: **http://localhost:5000**
-
----
-
-### Opção 2: Execução com Docker
-
-#### 1. Construir e executar
-
-```bash
-docker-compose up --build
-```
-
-#### 2. Aceder à aplicação
-
-Abrir navegador em: **http://localhost:5000**
-
-#### 3. Parar aplicação
-
-```bash
-docker-compose down
-```
-
----
-
-## 📖 Como Usar
+## Como Usar
 
 ### 1. Upload de Texto
 
-1. Na interface web, clique na área de upload
-2. Selecione um ficheiro `.txt` com texto em linguagem natural
-3. O sistema irá automaticamente:
-   - Extrair fatos e regras
-   - Adicionar à base de conhecimento
-   - Executar inferências
+1. Aceder à interface web em http://localhost:5000
+2. Clicar na área de upload
+3. Selecionar um ficheiro `.txt` (ex: `sample_texts/exemplo1.txt`)
+4. O sistema extrai automaticamente fatos e regras
 
 ### 2. Visualizar Base de Conhecimento
 
-- Clique em "Ver Fatos" para ver todos os fatos
-- Clique em "Ver Regras" para ver todas as regras
-- As estatísticas mostram quantos fatos, regras e inferências existem
+- Clicar em **"Ver Fatos"** para expandir os fatos extraídos
+- Clicar em **"Ver Regras"** para expandir as regras
+- Visualizar estatísticas (fatos, regras, inferências)
 
 ### 3. Executar Consultas
 
-1. Digite uma consulta no formato: `predicado(argumento)?`
-2. Exemplos:
-   - `mortal(Socrates)?`
-   - `pensador(Platao)?`
-   - `ser_vivo(Rex)?`
-3. O sistema retornará:
-   - **Verdadeiro/Falso**
-   - **Árvore de prova** completa mostrando o raciocínio
+Digite consultas no formato: `predicado(argumento)?`
 
-### 4. Gestão da Base
+**Exemplos:**
+- `mortal(Sócrates)?`
+- `pensador(Platão)?`
+- `ser_vivo(Rex)?`
 
-- **Atualizar**: Recarrega a base de conhecimento
-- **Executar Inferência**: Força nova derivação de fatos
-- **Limpar Base**: Remove todos os fatos e regras
+O sistema retorna:
+- ✅ **Verdadeiro** / ❌ **Falso**
+- **Árvore de prova** completa
 
 ---
 
-## 📝 Exemplos
+##  Exemplo Prático
 
-### Exemplo 1: Silogismo Clássico
+### Ficheiro de entrada (`exemplo1.txt`)
 
-**Ficheiro: `exemplo1.txt`**
 ```
 Sócrates é um humano.
 Todo humano é mortal.
@@ -151,147 +136,171 @@ Platão é um filósofo.
 Todo filósofo é pensador.
 ```
 
-**Fatos extraídos:**
-- `humano(Socrates)`
-- `filosofo(Platao)`
+### Fatos Extraídos
 
-**Regras extraídas:**
-- `mortal(X) :- humano(X)`
-- `pensador(X) :- filosofo(X)`
+```
+humano(Sócrates)
+filósofo(Platão)
+```
 
-**Consulta:** `mortal(Socrates)?`
+### Regras Extraídas
 
-**Resultado:** ✓ **VERDADEIRO**
+```
+mortal(X) :- humano(X)
+pensador(X) :- filósofo(X)
+```
+
+### Consulta: `mortal(Sócrates)?`
+
+**Resultado:** ✅ **VERDADEIRO**
 
 **Árvore de Prova:**
 ```
-└── mortal(Socrates)
+└── mortal(Sócrates)
     (regra: mortal(X) :- humano(X))
-    └── humano(Socrates)
+    └── humano(Sócrates)
         (fato base)
 ```
 
 ---
 
-### Exemplo 2: Cadeia de Inferências
+## 🧪 Executar Testes
 
-**Ficheiro: `exemplo2.txt`**
+### Todos os testes
+
+```bash
+source venv/bin/activate
+python tests/run_all_tests.py
 ```
-Rex é um cão.
-Todo cão é um animal.
-Todo animal é um ser vivo.
+
+### Teste de integração
+
+```bash
+python tests/test_integration.py
 ```
 
-**Consulta:** `ser_vivo(Rex)?`
+### Resultado Esperado
 
-O sistema irá derivar automaticamente:
-1. `animal(Rex)` (a partir de `cao(Rex)` e regra)
-2. `ser_vivo(Rex)` (a partir de `animal(Rex)` e regra)
+```
+============================================================
+🧪 EXECUTANDO TODOS OS TESTES
+============================================================
+
+ Testes de Extração...
+✓ Testes de extração: OK
+
+ Testes de Unificação...
+✓ Testes de unificação: OK
+
+⚡ Testes de Inferência...
+✓ Testes de inferência: OK
+
+ Testes de Consultas...
+✓ Testes de consultas: OK
+
+============================================================
+✅ TODOS OS TESTES PASSARAM COM SUCESSO!
+============================================================
+```
 
 ---
 
-## 🧪 Testes
+## 🐳 Docker
 
-### Executar testes unitários
-
-```bash
-python -m pytest tests/
-```
-
-### Executar demo notebook
+### Construir e Executar
 
 ```bash
-jupyter notebook notebooks/demo_inferencia.ipynb
+docker-compose up --build
 ```
+
+### Parar
+
+```bash
+docker-compose down
+```
+
+### Características do Container
+
+- **Imagem Base:** Python 3.11-slim
+- **Modelo spaCy:** pt_core_news_sm-3.7.0
+- **Porta:** 5000
+- **Volumes:** Persistência de dados
+- **Auto-restart:** Configurado
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 - **Python 3.11**
-- **spaCy** - Processamento de linguagem natural
-- **Flask** - Framework web
+- **spaCy 3.7.2** - Processamento de linguagem natural
+- **Flask 3.0.0** - Framework web
 - **Docker** - Containerização
 - **JSON** - Persistência de dados
 
 ---
 
-## 📊 Critérios de Avaliação Implementados
+##  Funcionalidades Implementadas
 
-| Critério | Implementação | Pontos |
-|----------|---------------|--------|
-| **Extração Semântica** | ✅ spaCy com regex patterns para PT | 4/4 |
-| **Inferência Lógica** | ✅ Forward chaining completo | 4/4 |
-| **Consultas e Unificação** | ✅ Unificação + provas detalhadas | 3/3 |
-| **Interface Web** | ✅ Flask com árvores colapsáveis | 4/4 |
-| **Documentação & Docker** | ✅ README + Dockerfile funcionais | 3/3 |
-| **Criatividade** | ✅ Interface moderna e intuitiva | 2/2 |
+### Extração Semântica (4 pontos)
+- ✅ Identificação de entidades com spaCy
+- ✅ Extração de fatos: "X é um Y"
+- ✅ Extração de regras: "Todo X é Y"
+- ✅ Normalização de termos
+- ✅ Suporte a Unicode (português)
+
+### Inferência Lógica (4 pontos)
+- ✅ Encadeamento para frente (forward chaining)
+- ✅ Unificação de predicados
+- ✅ Aplicação de substituições
+- ✅ Derivação de novos fatos
+- ✅ Prevenção de duplicados
+- ✅ Justificações com IDs únicos
+
+### Consultas (3 pontos)
+- ✅ Parse de consultas
+- ✅ Busca em base de conhecimento
+- ✅ Geração de árvores de prova
+- ✅ Formato hierárquico
+- ✅ Tracking de derivações
+
+### Interface Web (4 pontos)
+- ✅ Upload de ficheiros
+- ✅ Visualização da KB
+- ✅ Consultas interativas
+- ✅ Árvores de prova colapsáveis
+- ✅ Design moderno e responsivo
+- ✅ Estatísticas em tempo real
+
+### Documentação & Docker (3 pontos)
+- ✅ README completo
+- ✅ Dockerfile funcional
+- ✅ docker-compose.yml
+- ✅ Instruções claras
+- ✅ Exemplos práticos
+
+### Criatividade (2 pontos)
+- ✅ Interface moderna com gradientes
+- ✅ Jupyter Notebook demonstrativo
+- ✅ Script de início rápido
+- ✅ Suite completa de testes
+- ✅ Código bem estruturado
 
 **Total:** 20/20 pontos
 
 ---
 
-## 🎯 Funcionalidades Implementadas
+## 📚 Recursos Adicionais
 
-- ✅ Leitura de ficheiros `.txt`
-- ✅ Extração automática de fatos e regras
-- ✅ Normalização de termos
-- ✅ Base de conhecimento JSON persistente
-- ✅ Unificação de predicados
-- ✅ Encadeamento para frente
-- ✅ Prevenção de duplicados
-- ✅ Justificações para inferências
-- ✅ Motor de consultas
-- ✅ Árvores de prova hierárquicas
-- ✅ Interface Web responsiva
-- ✅ Upload de ficheiros
-- ✅ Visualização colapsável
-- ✅ Docker e docker-compose
-- ✅ Jupyter notebook demonstrativo
+- **Jupyter Notebook:** `notebooks/demo_inferencia.ipynb` - Demo interativa completa
+- **Textos de Exemplo:** `sample_texts/*.txt` - Exemplos prontos a usar
+- **Instruções de Avaliação:** `INSTRUCOES_AVALIACAO.md` - Guia para o professor
+- **Checklist:** `checklist.md` - Lista de tarefas completa
 
 ---
 
-## 📝 Notas Técnicas
-
-### Algoritmo de Inferência
-
-O sistema usa **forward chaining** com as seguintes características:
-
-1. **Inicialização**: Carrega fatos da KB
-2. **Iteração**: Para cada regra, tenta unificar com fatos conhecidos
-3. **Aplicação**: Se unificação bem-sucedida, deriva novo fato
-4. **Registro**: Guarda justificação (regra + fatos usados)
-5. **Repetição**: Continua até não haver novos fatos
-
-### Formato de Predicados
-
-- **Fatos**: `predicado(termo)`
-  - Exemplo: `humano(Socrates)`
-  
-- **Regras**: `consequente :- antecedente`
-  - Exemplo: `mortal(X) :- humano(X)`
-
-- **Variáveis**: Termos com primeira letra maiúscula
-  - Exemplo: `X`, `Y`, `Pessoa`
-
-### Padrões de Extração
-
-O sistema reconhece:
-- "X é um/uma Y" → `Y(X)`
-- "Todo/Toda X é Y" → `Y(X) :- X(X)`
-- "Todos os X são Y" → `Y(X) :- X(X)`
-
----
-
-## 🤝 Autor
+## 🎓 Autor
 
 **Projeto desenvolvido para TP04 - Inteligência Artificial 2025**
-
----
-
-## 📅 Data de Entrega
-
-**15/11/2025 às 12h15**
 
 ---
 

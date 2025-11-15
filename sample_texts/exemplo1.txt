@@ -1,4 +1,42 @@
-Sócrates é um humano.
-Todo humano é mortal.
+Sócrates é um filósofo.
 Platão é um filósofo.
+Aristóteles é um filósofo.
+Descartes é um filósofo.
+Kant é um filósofo.
+
+Sócrates é um humano.
+Platão é um humano.
+Aristóteles é um humano.
+Descartes é um humano.
+Kant é um humano.
+
+Sócrates é grego.
+Platão é grego.
+Aristóteles é grego.
+Descartes é francês.
+Kant é alemão.
+
+Platão é um estudante.
+Aristóteles é um estudante.
+
 Todo filósofo é pensador.
+Todo humano é mortal.
+Todo mortal é finito.
+Todo pensador é sábio.
+Todo grego é europeu.
+Todo francês é europeu.
+Todo alemão é europeu.
+Todo europeu é ocidental.
+Todo estudante é aprendiz.
+Todo sábio é respeitado.
+
+Sócrates ensinou Platão.
+Platão ensinou Aristóteles.
+Sócrates viveu em Atenas.
+Platão fundou a Academia.
+Aristóteles estudou na Academia.
+Descartes escreveu o Discurso do Método.
+Kant escreveu a Crítica da Razão Pura.
+
+Todo filósofo que escreveu algo é autor.
+Todo estudante que estudou em algum lugar é académico.

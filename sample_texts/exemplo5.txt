@@ -1,0 +1,127 @@
+Portugal é um país.
+Espanha é um país.
+França é um país.
+Alemanha é um país.
+Itália é um país.
+Brasil é um país.
+Angola é um país.
+Moçambique é um país.
+
+Lisboa é uma cidade.
+Porto é uma cidade.
+Madrid é uma cidade.
+Barcelona é uma cidade.
+Paris é uma cidade.
+Berlim é uma cidade.
+Roma é uma cidade.
+Milão é uma cidade.
+
+Lisboa é capital de Portugal.
+Madrid é capital de Espanha.
+Paris é capital de França.
+Berlim é capital de Alemanha.
+Roma é capital de Itália.
+
+Todo país é nação.
+Toda nação é estado.
+Todo estado é entidade_política.
+Toda cidade é localidade.
+Toda localidade é lugar.
+
+Portugal está na Europa.
+Espanha está na Europa.
+França está na Europa.
+Alemanha está na Europa.
+Itália está na Europa.
+
+Brasil está na América_do_Sul.
+Angola está na África.
+Moçambique está na África.
+
+Todo país que está na Europa é europeu.
+Todo país que está na América_do_Sul é sul_americano.
+Todo país que está na África é africano.
+
+Portugal fala português.
+Brasil fala português.
+Angola fala português.
+Moçambique fala português.
+
+Espanha fala espanhol.
+França fala francês.
+Alemanha fala alemão.
+Itália fala italiano.
+
+Todo país que fala português é lusófono.
+Todo lusófono é irmão_de_língua.
+
+Portugal tem monarquia histórica.
+Espanha tem monarquia.
+França tem república.
+Alemanha tem república.
+Brasil tem república.
+
+Todo país que tem monarquia é monárquico.
+Todo país que tem república é republicano.
+
+Portugal é membro da União Europeia.
+Espanha é membro da União Europeia.
+França é membro da União Europeia.
+Alemanha é membro da União Europeia.
+Itália é membro da União Europeia.
+
+Todo país que é membro da União Europeia é comunitário.
+Todo comunitário é integrado.
+
+Portugal tem costa atlântica.
+Espanha tem costa atlântica.
+França tem costa atlântica.
+Portugal tem costa mediterrânica.
+Espanha tem costa mediterrânica.
+França tem costa mediterrânica.
+Itália tem costa mediterrânica.
+
+Todo país que tem costa atlântica é atlântico.
+Todo país que tem costa mediterrânica é mediterrânico.
+
+Lisboa tem rio Tejo.
+Porto tem rio Douro.
+Paris tem rio Sena.
+Roma tem rio Tibre.
+
+Toda cidade que tem rio é ribeirinha.
+Toda ribeirinha é banhada_por_água.
+
+Portugal produziu grandes navegadores.
+Espanha produziu grandes navegadores.
+
+Todo país que produziu grandes navegadores é marítimo.
+Todo marítimo é náutico.
+Todo náutico é ligado_ao_mar.
+
+Portugal tem clima temperado.
+Espanha tem clima temperado.
+França tem clima temperado.
+Brasil tem clima tropical.
+Angola tem clima tropical.
+
+Todo país que tem clima temperado é ameno.
+Todo país que tem clima tropical é quente.
+
+Lisboa tem população de quinhentos mil.
+Porto tem população de trezentos mil.
+Madrid tem população de três milhões.
+Paris tem população de dois milhões.
+
+Toda cidade que tem população de mais de um milhão é metrópole.
+Toda metrópole é grande_cidade.
+Toda grande_cidade é centro_urbano.
+
+Portugal tem história rica.
+Espanha tem história rica.
+França tem história rica.
+Itália tem história rica.
+
+Todo país que tem história rica é histórico.
+Todo histórico é cultural.
+Todo cultural é patrimonial.

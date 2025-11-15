@@ -1,0 +1,98 @@
+Einstein é um cientista.
+Newton é um cientista.
+Galileu é um cientista.
+Marie_Curie é uma cientista.
+Darwin é um cientista.
+
+Einstein é um físico.
+Newton é um físico.
+Galileu é um físico.
+Marie_Curie é uma física.
+
+Darwin é um biólogo.
+
+Todo cientista é investigador.
+Todo físico é cientista.
+Todo biólogo é cientista.
+Todo investigador é académico.
+Todo académico é profissional.
+Todo profissional é trabalhador.
+Todo trabalhador é pessoa.
+Toda pessoa é ser_humano.
+
+Einstein desenvolveu a teoria da relatividade.
+Newton descobriu a lei da gravidade.
+Galileu inventou o telescópio.
+Marie_Curie descobriu o rádio.
+Darwin propôs a teoria da evolução.
+
+Todo cientista que desenvolveu teoria é teórico.
+Todo cientista que descobriu algo é descobridor.
+Todo cientista que inventou algo é inventor.
+
+Einstein ganhou Prémio Nobel.
+Marie_Curie ganhou Prémio Nobel.
+
+Todo cientista que ganhou Prémio Nobel é premiado.
+Todo premiado é reconhecido.
+Todo reconhecido é famoso.
+
+Einstein é alemão.
+Newton é inglês.
+Galileu é italiano.
+Marie_Curie é polaca.
+Darwin é inglês.
+
+Todo alemão é europeu.
+Todo inglês é europeu.
+Todo italiano é europeu.
+Toda polaca é europeu.
+Todo europeu é cidadão.
+
+Einstein viveu no século vinte.
+Newton viveu no século dezassete.
+Galileu viveu no século dezasseis.
+Marie_Curie viveu no século vinte.
+Darwin viveu no século dezanove.
+
+Todo cientista que viveu no século vinte é moderno.
+Todo cientista que viveu no século dezanove é contemporâneo.
+Todo cientista que viveu no século dezassete é clássico.
+Todo cientista que viveu no século dezasseis é renascentista.
+
+Einstein escreveu artigos.
+Newton escreveu livros.
+Galileu escreveu tratados.
+Darwin escreveu livros.
+
+Todo cientista que escreveu artigos é publicador.
+Todo cientista que escreveu livros é autor.
+Todo autor é escritor.
+Todo escritor é comunicador.
+
+Newton estudou matemática.
+Einstein estudou física.
+Galileu estudou astronomia.
+Marie_Curie estudou química.
+Darwin estudou biologia.
+
+Todo cientista que estudou matemática é matemático.
+Todo cientista que estudou física é físico.
+Todo cientista que estudou astronomia é astrónomo.
+Todo cientista que estudou química é químico.
+Todo cientista que estudou biologia é biólogo.
+
+Newton foi professor.
+Einstein foi professor.
+Galileu foi professor.
+
+Todo cientista que foi professor é educador.
+Todo educador é formador.
+Todo formador é mentor.
+
+Marie_Curie foi pioneira.
+Marie_Curie foi mulher cientista.
+
+Todo cientista que foi pioneiro é inovador.
+Todo inovador é visionário.
+Todo visionário é revolucionário.

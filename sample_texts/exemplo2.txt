@@ -1,3 +1,69 @@
 Rex é um cão.
-Todo cão é um animal.
-Todo animal é um ser vivo.
+Max é um cão.
+Luna é um gato.
+Mia é um gato.
+Tweety é um pássaro.
+Nemo é um peixe.
+Dumbo é um elefante.
+
+Simba é um leão.
+Bagheera é uma pantera.
+Baloo é um urso.
+
+Todo cão é animal.
+Todo gato é animal.
+Todo pássaro é animal.
+Todo peixe é animal.
+Todo elefante é animal.
+Todo leão é animal.
+Todo pantera é animal.
+Todo urso é animal.
+
+Todo animal é ser_vivo.
+Todo ser_vivo é organismo.
+Todo organismo é entidade_biológica.
+
+Rex é domesticado.
+Max é domesticado.
+Luna é domesticado.
+Mia é domesticado.
+
+Todo cão que é domesticado é pet.
+Todo gato que é domesticado é pet.
+
+Simba é selvagem.
+Bagheera é selvagem.
+Baloo é selvagem.
+
+Todo leão é felino.
+Todo pantera é felino.
+Todo gato é felino.
+Todo felino é carnívoro.
+
+Todo cão é canino.
+Todo canino é mamífero.
+Todo felino é mamífero.
+Todo elefante é mamífero.
+Todo urso é mamífero.
+Todo mamífero é vertebrado.
+
+Todo pássaro é ovíparo.
+Todo peixe é aquático.
+Todo pássaro pode voar.
+
+Rex tem quatro patas.
+Max tem quatro patas.
+Luna tem quatro patas.
+Dumbo tem quatro patas.
+Simba tem quatro patas.
+
+Tweety tem duas patas.
+Tweety tem penas.
+Tweety tem bico.
+
+Nemo tem barbatanas.
+Nemo vive na água.
+
+Todo animal que tem penas é ave.
+Todo animal que vive na água é aquático.
+Todo animal que tem quatro patas é quadrúpede.

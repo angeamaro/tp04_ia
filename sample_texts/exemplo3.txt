@@ -1,4 +1,99 @@
 Maria é uma estudante.
 Pedro é um estudante.
-Todo estudante é uma pessoa.
-Todo pessoa é um ser humano.
+João é um estudante.
+Maria é uma professora.
+Pedro é um médico.
+Ana é uma engenheira.
+Carlos é um programador.
+Sofia é uma cientista.
+Lucas é um artista.
+Beatriz é uma advogada.
+
+Miguel é um estudante.
+Teresa é uma estudante.
+Rafael é um estudante.
+
+Todo estudante é pessoa.
+Toda professora é pessoa.
+Todo médico é pessoa.
+Toda engenheira é pessoa.
+Todo programador é pessoa.
+Toda cientista é pessoa.
+Todo artista é pessoa.
+Toda advogada é pessoa.
+
+Toda pessoa é ser_humano.
+Todo ser_humano é mamífero.
+Todo mamífero é ser_vivo.
+Todo ser_vivo é entidade.
+
+Maria ensina matemática.
+Pedro trabalha em hospital.
+Ana constrói pontes.
+Carlos desenvolve software.
+Sofia pesquisa física.
+Lucas pinta quadros.
+Beatriz defende clientes.
+
+João estuda na universidade.
+Miguel estuda na universidade.
+Teresa estuda na universidade.
+Rafael estuda na universidade.
+
+Maria trabalha na universidade.
+Sofia trabalha na universidade.
+
+Todo estudante que estuda na universidade é universitário.
+Toda pessoa que trabalha na universidade é académico.
+Toda pessoa que ensina é educador.
+Toda pessoa que trabalha em hospital é profissional_saúde.
+Toda pessoa que pesquisa é investigador.
+
+João é jovem.
+Miguel é jovem.
+Teresa é jovem.
+Rafael é jovem.
+
+Maria é adulto.
+Pedro é adulto.
+Ana é adulto.
+Carlos é adulto.
+Sofia é adulto.
+Lucas é adulto.
+Beatriz é adulto.
+
+Todo jovem é energético.
+Todo adulto é responsável.
+Todo profissional_saúde é dedicado.
+Todo educador é paciente.
+Todo investigador é curioso.
+
+Carlos sabe programar.
+Ana sabe calcular.
+Maria sabe ensinar.
+Pedro sabe diagnosticar.
+Sofia sabe analisar.
+Beatriz sabe argumentar.
+Lucas sabe criar.
+
+Toda pessoa que sabe programar é técnico.
+Toda pessoa que sabe calcular é analítico.
+Toda pessoa que sabe ensinar é comunicativo.
+Toda pessoa que sabe criar é criativo.
+
+João gosta de estudar.
+Miguel gosta de estudar.
+Teresa gosta de ler.
+Rafael gosta de escrever.
+
+Carlos gosta de tecnologia.
+Ana gosta de matemática.
+Maria gosta de ensinar.
+Sofia gosta de ciência.
+Lucas gosta de arte.
+
+Toda pessoa que gosta de estudar é dedicado.
+Toda pessoa que gosta de ciência é científico.
+Toda pessoa que gosta de arte é sensível.
+Toda pessoa que gosta de tecnologia é moderno.
+Toda pessoa é um ser humano.

@@ -16,17 +16,17 @@ from app.query_engine import QueryEngine
 def test_complete_pipeline():
     """Testa o pipeline completo do sistema."""
     print("\n" + "="*60)
-    print("🧪 TESTE DE INTEGRAÇÃO COMPLETO")
+    print("TESTE DE INTEGRAÇÃO COMPLETO")
     print("="*60)
     
     # 1. Ler texto de exemplo
-    print("\n1️⃣ Lendo ficheiro de texto...")
+    print("\n1 - Lendo ficheiro de texto...")
     text = read_text("sample_texts/exemplo1.txt")
     assert text is not None
     print(f"✓ Texto lido: {len(text)} caracteres")
     
     # 2. Extrair conhecimento
-    print("\n2️⃣ Extraindo conhecimento com spaCy...")
+    print("\n2 - Extraindo conhecimento com spaCy...")
     extractor = SemanticExtractor()
     knowledge = extractor.extract_knowledge(text)
     print(f"✓ Fatos extraídos: {len(knowledge['facts'])}")
@@ -37,7 +37,7 @@ def test_complete_pipeline():
         print(f"  - {rule}")
     
     # 3. Criar e popular base de conhecimento
-    print("\n3️⃣ Criando base de conhecimento...")
+    print("\n3 - Criando base de conhecimento...")
     kb = KnowledgeBase("test_integration.json")
     kb.clear()
     kb.import_knowledge(knowledge['facts'], knowledge['rules'])

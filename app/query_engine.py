@@ -69,19 +69,45 @@ class QueryEngine:
             if derived:
                 all_facts.append(derived)
         
-        for fact in all_facts:
-            subs = unify_predicates(query, fact)
-            if subs is not None:
-                # Encontrou match
-                inference_info = self.find_inference_for_fact(fact)
-                proof_type = 'inference' if inference_info else 'base_fact'
-                return {
-                    'result': 'true',
-                    'query': query,
-                    'matched_fact': fact,
-                    'substitutions': subs,
-                    'proof_tree': self.build_proof_tree(fact, proof_type, inference_info)
-                }
+        # Parse da query para verificar se tem variáveis
+        query_pred = parse_predicate(query)
+        query_has_variables = False
+        if query_pred:
+            # Verificar se algum argumento é uma variável (começa com maiúscula e é uma letra só, ou é Var...)
+            for arg in query_pred[1]:
+                if arg and (arg[0].isupper() and len(arg) == 1) or arg.startswith('Var'):
+                    query_has_variables = True
+                    break
+        
+        # Se a query não tem variáveis, só aceitamos match exato
+        if not query_has_variables:
+            # Query específica (ex: mortal(Maria)) - deve existir fato concreto
+            for fact in all_facts:
+                if fact == query:  # Match exato apenas
+                    inference_info = self.find_inference_for_fact(fact)
+                    proof_type = 'inference' if inference_info else 'base_fact'
+                    return {
+                        'result': 'true',
+                        'query': query,
+                        'matched_fact': fact,
+                        'substitutions': {},
+                        'proof_tree': self.build_proof_tree(fact, proof_type, inference_info)
+                    }
+        else:
+            # Query com variáveis (ex: mortal(X)) - pode unificar
+            for fact in all_facts:
+                subs = unify_predicates(query, fact)
+                if subs is not None:
+                    # Encontrou match
+                    inference_info = self.find_inference_for_fact(fact)
+                    proof_type = 'inference' if inference_info else 'base_fact'
+                    return {
+                        'result': 'true',
+                        'query': query,
+                        'matched_fact': fact,
+                        'substitutions': subs,
+                        'proof_tree': self.build_proof_tree(fact, proof_type, inference_info)
+                    }
         
         # Não encontrado
         return {
